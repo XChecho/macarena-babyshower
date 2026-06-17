@@ -1,0 +1,6 @@
+{
+  "name": "Macarena Baby Shower",
+  "description": "Landing page adorable con temática Cow Chibi para el Baby Shower de Macarena Morales Cárdenas",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
