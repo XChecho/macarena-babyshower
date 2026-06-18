@@ -52,10 +52,10 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold font-display text-primary mb-1 drop-shadow-sm leading-none">
+          <h1 className="text-5xl md:text-8xl font-bold font-baby-name text-primary mb-1 drop-shadow-sm leading-none">
             Macarena
           </h1>
-          <h2 className="text-2xl md:text-3xl font-bold font-display text-primary mb-4 drop-shadow-sm leading-none opacity-75">
+          <h2 className="text-xl md:text-3xl font-regular font-display text-primary mb-4 drop-shadow-sm leading-none opacity-75">
             Morales Cárdenas
           </h2>
 
