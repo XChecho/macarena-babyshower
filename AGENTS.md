@@ -15,7 +15,7 @@
 - **Styling:** Tailwind CSS v4 (configuración inline en CSS con `@theme`)
 - **Animations:** `motion` (Framer Motion)
 - **Icons:** `lucide-react`
-- **Audio:** Web Audio API (sintetizador personalizado en `LullabySynth.ts`)
+- **Audio:** HTML5 Audio API (reproductor MP3 con loop)
 - **Package Manager:** pnpm
 
 ## Project Structure
@@ -23,20 +23,44 @@
 ```
 macarena-baby-shower/
 ├── assets/
-│   └── .aistudio/          # Configuración de AI Studio
+│   ├── fonts/                # Fuentes locales (Bubbleboddy Neue, Merienda)
+│   └── .aistudio/            # Configuración de AI Studio
+├── public/
+│   └── assets/
+│       ├── images/           # Imágenes locales (avatar, galería)
+│       └── sounds/           # Audio (Índigo - Camilo y Evaluna)
 ├── src/
-│   ├── App.tsx             # Componente principal (monolítico, 873 líneas)
-│   ├── index.css           # Design tokens, Tailwind config y utilidades
-│   ├── main.tsx            # Entry point de React
-│   └── LullabySynth.ts     # Sintetizador de música de cuna (Web Audio API)
-├── index.html              # HTML entry point
-├── metadata.json           # Metadata de AI Studio
-├── package.json            # Dependencies y scripts
-├── pnpm-workspace.yaml     # Configuración de workspace
-├── tsconfig.json           # Configuración TypeScript
-├── vite.config.ts          # Configuración de Vite
-├── AGENTS.md               # Este archivo
-└── DESIGN.md               # Design system y guía de estilo
+│   ├── App.tsx               # Orquestador principal de secciones
+│   ├── main.tsx              # Entry point de React
+│   ├── index.css             # Design tokens, Tailwind config y utilidades
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.tsx    # Navegación desktop + móvil
+│   │   │   └── Footer.tsx
+│   │   ├── sections/
+│   │   │   ├── Hero.tsx      # Cuenta regresiva, avatar chibi
+│   │   │   ├── EventDetails.tsx  # Fecha, hora, lugar
+│   │   │   ├── Gallery.tsx   # Fotos polaroid con lightbox
+│   │   │   ├── Gifts.tsx     # Link a SmileBaby
+│   │   │   ├── Rsvp.tsx      # Formulario WhatsApp
+│   │   │   └── Thanks.tsx    # Agradecimientos
+│   │   └── ui/
+│   │       ├── ParticleBackground.tsx
+│   │       ├── Lightbox.tsx
+│   │       └── MusicToggle.tsx
+│   ├── hooks/
+│   │   ├── useCountdown.ts
+│   │   ├── useScrollSpy.ts
+│   │   └── useBackgroundMusic.ts
+│   └── lib/
+│       ├── constants.ts      # URLs, config, datos estáticos
+│       └── utils.ts
+├── index.html
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── AGENTS.md                 # Este archivo
+└── DESIGN.md                 # Design system y guía de estilo
 ```
 
 ## Scripts
@@ -55,13 +79,13 @@ macarena-baby-shower/
 - Uso: Títulos, nombres, headers principales
 - Características: Redondeada, amigable, estilo "bubble"
 - Fuente: [Bubbleboddy Neue](https://www.dafont.com/es/bubbleboddy-neue.font)
-- Nota: Fuente personalizada, debe descargarse y colocarse en `assets/fonts/`
+- Estado: ✅ Configurada en `assets/fonts/`
 
 **Body Font:** Merienda  
 - Uso: Cuerpo de texto, acentos, etiquetas
 - Características: Serif cálida, legible, estilo "bookish"
 - Fuente: [Merienda](https://fonts.google.com/specimen/Merienda)
-- Carga: Google Fonts (ya configurado en `index.css`)
+- Estado: ✅ Configurada en `assets/fonts/`
 
 ### Color Palette
 
@@ -146,11 +170,14 @@ macarena-baby-shower/
 1. **Hero** - Cuenta regresiva al evento, avatar chibi cow, partículas flotantes
 2. **Event Details** - Fecha, hora, lugar con link a Google Maps
 3. **Gallery** - Fotos tipo polaroid con lightbox
-4. **RSVP** - Formulario que genera mensaje de WhatsApp
+4. **Gifts** - Enlace a SmileBaby con mensaje emotivo
+5. **RSVP** - Formulario que genera mensaje de WhatsApp
+6. **Thanks** - Agradecimientos con animaciones
 
 ### Interactive Elements
 
-- **Música de cuna:** Sintetizador Web Audio API con melodía suave
+- **Música de fondo:** "Índigo" de Camilo y Evaluna en loop (inicia tras interacción)
+- **Botón mute:** Control de música en navbar
 - **Partículas:** Corazones y soles flotantes animados
 - **Lightbox:** Modal para ver fotos en grande
 - **Countdown:** Cuenta regresiva en tiempo real
@@ -161,9 +188,10 @@ macarena-baby-shower/
 
 ### File Organization
 
-- **Componentes:** Un solo archivo `App.tsx` (monolítico, 873 líneas)
+- **Componentes:** Extraídos en `src/components/` (layout, sections, ui)
+- **Hooks:** Custom hooks en `src/hooks/`
+- **Constantes:** URLs y config en `src/lib/constants.ts`
 - **Estilos:** `index.css` con design tokens y utilidades Tailwind
-- **Lógica:** Separada en `LullabySynth.ts` para audio
 
 ### Styling Approach
 
@@ -175,51 +203,35 @@ macarena-baby-shower/
 ### State Management
 
 - `useState` para estado local
-- `useEffect` para efectos secundarios (countdown, scroll spy, partículas)
+- `useEffect` para efectos secundarios
+- Custom hooks para lógica reutilizable
 - No hay contexto global ni librerías de estado
 
 ### Animation Strategy
 
 - `motion/react` (Framer Motion) para animaciones de componentes
 - CSS animations para efectos continuos (float, bounce, pulse)
-- Web Audio API para efectos sonoros
+- HTML5 Audio API para música de fondo
 
-## Development Notes
+## Assets
 
-### AI Studio Origin
+### Images
 
-Este proyecto fue exportado de Google AI Studio. Consideraciones:
-- `metadata.json` contiene configuración de AI Studio
-- `assets/.aistudio/` tiene configuración específica
-- `README.md` menciona AI Studio pero no es relevante para desarrollo local
-- Variables de entorno `GEMINI_API_KEY` y `APP_URL` son para AI Studio (no se usan actualmente)
+Las imágenes se almacenan en `public/assets/images/`:
+- `chibi-cow-avatar.jpg` - Avatar principal de vaca chibi
+- `gallery-1.jpg` a `gallery-4.jpg` - Fotos de galería
 
-### Font Loading
+### Audio
 
-**Merienda:** Cargada desde Google Fonts en `index.css`  
-**Bubbleboddy Neue:** Fuente personalizada, requiere:
-1. Descargar de [dafont.com](https://www.dafont.com/es/bubbleboddy-neue.font)
-2. Colocar archivos en `assets/fonts/`
-3. Actualizar `@font-face` en `index.css`
-4. Referenciar en `--font-display` en `@theme`
+- `public/assets/sounds/indigo.mp3` - "Índigo" de Camilo y Evaluna (música de fondo)
 
-### Monolithic Component
+### Fonts
 
-`App.tsx` es un componente grande (873 líneas). Consideraciones:
-- No está refactorizado en sub-componentes
-- Toda la lógica de estado está en este archivo
-- Para cambios grandes, considerar extraer componentes reutilizables
-
-### Image Assets
-
-Las imágenes usan URLs de Google Photos (`lh3.googleusercontent.com`):
-- `CHIBI_COW_AVATAR`: Avatar principal de vaca chibi
-- `GALLERY_PHOTOS`: Array de 4 fotos de galería
-
-Para producción, considerar:
-- Alojar imágenes localmente o en CDN
-- Optimizar tamaños y formatos (WebP)
-- Agregar lazy loading (ya implementado parcialmente)
+- `assets/fonts/BubbleboddyNeue-Regular.ttf`
+- `assets/fonts/BubbleboddyNeue-Bold.ttf`
+- `assets/fonts/Merienda-Regular.ttf`
+- `assets/fonts/Merienda-Medium.ttf`
+- `assets/fonts/Merienda-Bold.ttf`
 
 ## Deployment
 
@@ -241,35 +253,30 @@ El proyecto puede desplegarse en cualquier hosting estático:
 
 ### Environment Variables
 
-Actualmente no se usan variables de entorno en el código. Las definidas en `.env.example` son para AI Studio y no son necesarias para desarrollo local.
+Actualmente no se usan variables de entorno en el código.
 
-## Accessibility Considerations
+## Configuration
 
-- Estructura semántica HTML (`<header>`, `<main>`, `<section>`, `<footer>`, `<nav>`)
-- Labels en formularios
-- `alt` text en imágenes
-- `aria-labels` en botones de iconos (parcial)
-- Navegación por teclado (nativa de React)
+### URLs Editables
+
+En `src/lib/constants.ts`:
+- `SMILEBABY_URL` - Link a la lista de regalos en SmileBaby
+- `WHATSAPP_NUMBER` - Número de WhatsApp para RSVP
+- `EVENT_DATE` - Fecha del evento (ISO format)
 
 ## Known Issues
 
-1. **Fuentes:** Bubbleboddy Neue no está configurada (falta archivo local)
-2. **Monolito:** `App.tsx` es muy grande, difícil de mantener
-3. **Imágenes externas:** URLs de Google Photos pueden expirar
-4. **WhatsApp:** Número hardcodeado (`56912345678`), debería ser configurable
-5. **Audio autoplay:** Algunos navegadores bloquean audio automático
+1. **WhatsApp:** Número hardcodeado (`56912345678`), debe actualizarse
+2. **Audio copyright:** "Índigo" de Camilo y Evaluna requiere licencia para uso público
+3. **Mobile nav:** 6 secciones pueden ser muchas para navegación móvil
 
 ## Future Improvements
 
-- [ ] Refactorizar `App.tsx` en componentes modulares
-- [ ] Agregar Bubbleboddy Neue como fuente local
-- [ ] Optimizar imágenes (WebP, lazy loading completo)
-- [ ] Agregar más secciones (registry, games, menu)
 - [ ] Implementar backend para RSVP (en vez de WhatsApp)
-- [ ] Agregar animaciones de scroll reveal
 - [ ] Mejorar accesibilidad (ARIA labels, focus management)
 - [ ] Agregar modo oscuro
 - [ ] Internacionalización (es/en)
+- [ ] Optimizar imágenes (WebP, lazy loading completo)
 
 ## Contact
 
