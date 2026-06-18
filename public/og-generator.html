@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Imagen OG - Baby Shower Macarena</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #fff5f7 0%, #ffe8ed 50%, #ffd9e2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(130, 80, 89, 0.15);
+      text-align: center;
+      max-width: 900px;
+      width: 100%;
+    }
+    h1 {
+      color: #825059;
+      margin-bottom: 10px;
+      font-size: 28px;
+    }
+    p {
+      color: #705a4c;
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    .preview {
+      margin: 20px auto;
+      border: 3px solid #f8b9c3;
+      border-radius: 12px;
+      overflow: hidden;
+      display: inline-block;
+      max-width: 100%;
+    }
+    .preview img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    button {
+      background: linear-gradient(135deg, #f8b9c3 0%, #e8a0ab 100%);
+      color: #825059;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(248, 185, 195, 0.4);
+    }
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(248, 185, 195, 0.6);
+    }
+    button:active {
+      transform: translateY(0);
+    }
+    .info {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff5f7;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #705a4c;
+    }
+    canvas {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🐮 Baby Shower - Imagen OG</h1>
+    <p>Vista previa de la imagen que se mostrará al compartir el enlace</p>
+    
+    <div class="preview">
+      <img id="previewImg" src="assets/images/og-image.svg" alt="Vista previa OG Image">
+    </div>
+    
+    <div class="buttons">
+      <button onclick="downloadPNG()">⬇️ Descargar como PNG</button>
+      <button onclick="downloadSVG()">⬇️ Descargar como SVG</button>
+    </div>
+    
+    <div class="info">
+      <strong>Instrucciones:</strong> Descarga la imagen como PNG (1200×630px) y guárdala en 
+      <code>public/assets/images/og-image.png</code> para usarla en la metadata.
+    </div>
+  </div>
+  
+  <canvas id="canvas" width="1200" height="630"></canvas>
+  
+  <script>
+    function downloadPNG() {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0);
+        const link = document.createElement('a');
+        link.download = 'og-image.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      };
+      
+      img.onerror = function() {
+        alert('Error al cargar la imagen. Intenta abrir este archivo desde un servidor local.');
+      };
+      
+      img.src = 'assets/images/og-image.svg';
+    }
+    
+    function downloadSVG() {
+      const link = document.createElement('a');
+      link.download = 'og-image.svg';
+      link.href = 'assets/images/og-image.svg';
+      link.click();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <clipPath id="bannerClip">
+      <rect width="1200" height="630" rx="0" ry="0"/>
+    </clipPath>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff5f7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffe8ed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd9e2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8b9c3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8a0ab;stop-opacity:1" />
+    </linearGradient>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.15"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#bannerClip)">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Cow spots decorative -->
+  <ellipse cx="160" cy="130" rx="70" ry="50" fill="#2d2d2d" opacity="0.08" transform="rotate(-15 160 130)"/>
+  <ellipse cx="1040" cy="110" rx="60" ry="45" fill="#2d2d2d" opacity="0.06" transform="rotate(20 1040 110)"/>
+  <ellipse cx="110" cy="490" rx="80" ry="55" fill="#2d2d2d" opacity="0.07" transform="rotate(10 110 490)"/>
+  <ellipse cx="1090" cy="510" rx="65" ry="48" fill="#2d2d2d" opacity="0.08" transform="rotate(-25 1090 510)"/>
+  <ellipse cx="600" cy="85" rx="55" ry="40" fill="#2d2d2d" opacity="0.05" transform="rotate(5 600 85)"/>
+  <ellipse cx="310" cy="540" rx="50" ry="35" fill="#2d2d2d" opacity="0.06" transform="rotate(-10 310 540)"/>
+  <ellipse cx="890" cy="550" rx="58" ry="42" fill="#2d2d2d" opacity="0.07" transform="rotate(15 890 550)"/>
+
+  <!-- Decorative hearts -->
+  <g opacity="0.3">
+    <path d="M 210 210 C 210 195, 225 195, 225 210 C 225 195, 240 195, 240 210 C 240 230, 225 245, 225 245 C 225 245, 210 230, 210 210 Z" fill="#f8b9c3"/>
+    <path d="M 940 190 C 940 178, 952 178, 952 190 C 952 178, 964 178, 964 190 C 964 206, 952 218, 952 218 C 952 218, 940 206, 940 190 Z" fill="#f8b9c3"/>
+    <path d="M 160 360 C 160 350, 170 350, 170 360 C 170 350, 180 350, 180 360 C 180 373, 170 383, 170 383 C 170 383, 160 373, 160 360 Z" fill="#fbe278"/>
+    <path d="M 1010 370 C 1010 360, 1020 360, 1020 370 C 1020 360, 1030 360, 1030 370 C 1030 383, 1020 393, 1020 393 C 1020 393, 1010 383, 1010 370 Z" fill="#fbe278"/>
+  </g>
+
+  <!-- Decorative flowers -->
+  <g opacity="0.25">
+    <circle cx="260" cy="440" r="12" fill="#f8b9c3"/>
+    <circle cx="248" cy="435" r="8" fill="#f8b9c3"/>
+    <circle cx="272" cy="435" r="8" fill="#f8b9c3"/>
+    <circle cx="255" cy="450" r="8" fill="#f8b9c3"/>
+    <circle cx="265" cy="450" r="8" fill="#f8b9c3"/>
+    <circle cx="260" cy="440" r="5" fill="#fbe278"/>
+
+    <circle cx="940" cy="470" r="10" fill="#fbe278"/>
+    <circle cx="930" cy="466" r="7" fill="#fbe278"/>
+    <circle cx="950" cy="466" r="7" fill="#fbe278"/>
+    <circle cx="936" cy="478" r="7" fill="#fbe278"/>
+    <circle cx="944" cy="478" r="7" fill="#fbe278"/>
+    <circle cx="940" cy="470" r="4" fill="#f8b9c3"/>
+  </g>
+
+  <!-- Stars -->
+  <g opacity="0.2">
+    <polygon points="360,160 365,175 380,175 368,185 372,200 360,190 348,200 352,185 340,175 355,175" fill="#fbe278"/>
+    <polygon points="840,140 844,152 856,152 846,160 850,172 840,164 830,172 834,160 824,152 836,152" fill="#fbe278"/>
+    <polygon points="460,490 463,500 473,500 465,506 468,516 460,510 452,516 455,506 447,500 457,500" fill="#f8b9c3"/>
+    <polygon points="740,500 743,510 753,510 745,516 748,526 740,520 732,526 735,516 727,510 737,510" fill="#f8b9c3"/>
+  </g>
+
+  <!-- Main content card -->
+  <rect x="200" y="140" width="800" height="350" rx="30" ry="30" fill="white" opacity="0.85" filter="url(#softShadow)"/>
+  <rect x="200" y="140" width="800" height="350" rx="30" ry="30" fill="none" stroke="#f8b9c3" stroke-width="3" opacity="0.6"/>
+
+  <!-- Decorative border dots -->
+  <circle cx="230" cy="170" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="250" cy="170" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="270" cy="170" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="970" cy="170" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="950" cy="170" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="930" cy="170" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="230" cy="460" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="250" cy="460" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="270" cy="460" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="970" cy="460" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="950" cy="460" r="4" fill="#f8b9c3" opacity="0.5"/>
+  <circle cx="930" cy="460" r="4" fill="#f8b9c3" opacity="0.5"/>
+
+  <!-- Cow ears decoration at top -->
+  <g transform="translate(600, 155)">
+    <ellipse cx="-40" cy="-10" rx="22" ry="30" fill="#2d2d2d" opacity="0.15" transform="rotate(-20 -40 -10)"/>
+    <ellipse cx="40" cy="-10" rx="22" ry="30" fill="#2d2d2d" opacity="0.15" transform="rotate(20 40 -10)"/>
+    <ellipse cx="-40" cy="-10" rx="15" ry="22" fill="#f8b9c3" opacity="0.4" transform="rotate(-20 -40 -10)"/>
+    <ellipse cx="40" cy="-10" rx="15" ry="22" fill="#f8b9c3" opacity="0.4" transform="rotate(20 40 -10)"/>
+  </g>
+
+  <!-- Title: Baby Shower -->
+  <text x="600" y="240" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#825059" text-anchor="middle" filter="url(#glow)">
+    Baby Shower
+  </text>
+
+  <!-- Decorative line -->
+  <line x1="380" y1="265" x2="820" y2="265" stroke="#f8b9c3" stroke-width="2" opacity="0.6"/>
+  <circle cx="600" cy="265" r="6" fill="#fbe278"/>
+  <circle cx="560" cy="265" r="4" fill="#f8b9c3"/>
+  <circle cx="640" cy="265" r="4" fill="#f8b9c3"/>
+
+  <!-- Name -->
+  <text x="600" y="320" font-family="Georgia, serif" font-size="42" fill="#705a4c" text-anchor="middle" font-style="italic">
+    Macarena Morales Cárdenas
+  </text>
+
+  <!-- Decorative hearts around name -->
+  <path d="M 340 305 C 340 295, 350 295, 350 305 C 350 295, 360 295, 360 305 C 360 318, 350 328, 350 328 C 350 328, 340 318, 340 305 Z" fill="#f8b9c3" opacity="0.5"/>
+  <path d="M 840 305 C 840 295, 850 295, 850 305 C 850 295, 860 295, 860 305 C 860 318, 850 328, 850 328 C 850 328, 840 318, 840 305 Z" fill="#f8b9c3" opacity="0.5"/>
+
+  <!-- Date -->
+  <rect x="420" y="355" width="360" height="50" rx="25" ry="25" fill="url(#pinkGradient)" opacity="0.3"/>
+  <text x="600" y="388" font-family="Georgia, serif" font-size="28" fill="#825059" text-anchor="middle" font-weight="bold">
+    15 de Octubre de 2026
+  </text>
+
+  <!-- Time -->
+  <text x="600" y="430" font-family="Georgia, serif" font-size="22" fill="#705a4c" text-anchor="middle">
+    4:00 PM
+  </text>
+
+  <!-- Bottom decorative element -->
+  <g transform="translate(600, 470)">
+    <path d="M -15 0 C -15 -8, -8 -8, -8 0 C -8 -8, 0 -8, 0 0 C 0 10, -8 18, -8 18 C -8 18, -15 10, -15 0 Z" fill="#f8b9c3" opacity="0.6"/>
+    <path d="M 0 0 C 0 -8, 8 -8, 8 0 C 8 -8, 15 -8, 15 0 C 15 10, 8 18, 8 18 C 8 18, 0 10, 0 0 Z" fill="#f8b9c3" opacity="0.6"/>
+  </g>
+
+  <!-- Cow nose decoration -->
+  <g transform="translate(600, 465)">
+    <ellipse cx="0" cy="0" rx="30" ry="20" fill="#f8b9c3" opacity="0.4"/>
+    <ellipse cx="-10" cy="-4" rx="4" ry="6" fill="#705a4c" opacity="0.3"/>
+    <ellipse cx="10" cy="-4" rx="4" ry="6" fill="#705a4c" opacity="0.3"/>
+    <path d="M -7 6 Q 0 11, 7 6" stroke="#705a4c" stroke-width="2" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Footer text -->
+  <text x="600" y="480" font-family="Georgia, serif" font-size="14" fill="#705a4c" text-anchor="middle" opacity="0.6" font-style="italic">
+    ¡Acompáñanos a celebrar!
+  </text>
+  </g>
+</svg>

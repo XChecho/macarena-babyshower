@@ -24,18 +24,18 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="glass-panel p-8 md:p-14 rounded-[2.5rem] md:rounded-[4rem] soft-shadow w-full relative"
+          className="glass-panel p-8 md:p-14 rounded-[2.5rem] md:rounded-[4rem] soft-shadow w-full relative overflow-hidden"
         >
           <img
             src="/assets/images/decoracion2.png"
             alt="Decoración esquina superior izquierda"
-            className="absolute -top-8 -left-8 md:-top-16 md:-left-16  w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20"
+            className="absolute -top-8 -left-8 md:-top-12 md:-left-16  w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20"
             style={{ transform: "rotate(-12deg)" }}
           />
           <img
             src="/assets/images/decoracion1.png"
             alt="Decoración esquina inferior derecha"
-            className="absolute -bottom-8 -right-8 md:-bottom-16 md:-right-16 w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20"
+            className="absolute -bottom-8 -right-8 md:-bottom-16 md:-right-20 w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20"
             style={{ transform: "rotate(12deg)" }}
           />
 
