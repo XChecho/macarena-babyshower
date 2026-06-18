@@ -6,10 +6,31 @@ import { WHATSAPP_NUMBER } from "../../lib/constants";
 export default function Rsvp() {
   const [rsvpName, setRsvpName] = useState("");
   const [rsvpAttending, setRsvpAttending] = useState("yes");
-  const [rsvpGuests, setRsvpGuests] = useState(1);
+  const [rsvpGuests, setRsvpGuests] = useState(0);
   const [rsvpDiet, setRsvpDiet] = useState("");
   const [rsvpWishes, setRsvpWishes] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const buildWhatsAppMessage = () => {
+    const isAttending = rsvpAttending === "yes";
+
+    let message = isAttending
+      ? `Hola, gracias por la invitación al Baby Shower de Macarena. Quiero confirmarte que yo, ${rsvpName}, voy a asistir.`
+      : `Hola, gracias por la invitación al Baby Shower de Macarena. Quiero confirmarte que yo, ${rsvpName}, no podré asistir.`;
+
+    if (isAttending && rsvpGuests > 0) {
+      message += `\nAdemás, voy con ${rsvpGuests} de acompañantes.`;
+    }
+
+    if (isAttending && rsvpDiet.trim()) {
+      message += `\nTambién me gustaría informar que ${rsvpDiet}.`;
+    }
+
+    if (rsvpWishes.trim()) {
+      message += `\n\nMis palabras para Macarena son:\n${rsvpWishes}`;
+    }
+
+    return message;
+  };
 
   const handleRsvpSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,23 +38,7 @@ export default function Rsvp() {
 
     setIsSubmitted(true);
 
-    const attendingMsg =
-      rsvpAttending === "yes"
-        ? `¡Sí, ahí estaré con mucho amor! 💕 (Acompañantes: ${rsvpGuests})`
-        : "No podré asistir esta vez, pero les envío todo mi amor y bendiciones 🍼✨";
-
-    let encodedText =
-      `¡Hola! Confirmo mi asistencia al Baby Shower de Macarena Morales Cárdenas:\n\n` +
-      `- *Nombre:* ${rsvpName}\n` +
-      `- *Asistencia:* ${attendingMsg}\n`;
-
-    if (rsvpAttending === "yes" && rsvpDiet.trim()) {
-      encodedText += `- *Requisitos dietarios/Alergias:* ${rsvpDiet}\n`;
-    }
-    if (rsvpWishes.trim()) {
-      encodedText += `- *Mensaje especial:* "${rsvpWishes}"\n`;
-    }
-
+    const encodedText = buildWhatsAppMessage();
     const whatsAppLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(encodedText)}`;
 
     setTimeout(() => {
@@ -84,11 +89,10 @@ export default function Rsvp() {
                     <button
                       type="button"
                       onClick={() => setRsvpAttending("yes")}
-                      className={`flex items-center justify-between p-3.5 rounded-2xl border-2 transition-all font-semibold font-body-custom text-sm cursor-pointer ${
-                        rsvpAttending === "yes"
-                          ? "border-primary bg-primary-container/20 text-primary shadow-sm"
-                          : "border-primary-container/40 bg-white/80 text-on-surface-variant"
-                      }`}
+                      className={`flex items-center justify-between p-3.5 rounded-2xl border-2 transition-all font-semibold font-body-custom text-sm cursor-pointer ${rsvpAttending === "yes"
+                        ? "border-primary bg-primary-container/20 text-primary shadow-sm"
+                        : "border-primary-container/40 bg-white/80 text-on-surface-variant"
+                        }`}
                     >
                       <span>Sí, ahí estaré con amor 💕</span>
                       <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${rsvpAttending === "yes" ? "border-primary bg-primary" : "border-primary-container"}`}>
@@ -99,11 +103,10 @@ export default function Rsvp() {
                     <button
                       type="button"
                       onClick={() => setRsvpAttending("no")}
-                      className={`flex items-center justify-between p-3.5 rounded-2xl border-2 transition-all font-semibold font-body-custom text-sm cursor-pointer ${
-                        rsvpAttending === "no"
-                          ? "border-primary bg-primary-container/20 text-primary shadow-sm"
-                          : "border-primary-container/40 bg-white/80 text-on-surface-variant"
-                      }`}
+                      className={`flex items-center justify-between p-3.5 rounded-2xl border-2 transition-all font-semibold font-body-custom text-sm cursor-pointer ${rsvpAttending === "no"
+                        ? "border-primary bg-primary-container/20 text-primary shadow-sm"
+                        : "border-primary-container/40 bg-white/80 text-on-surface-variant"
+                        }`}
                     >
                       <span>No podré asistir 🌟</span>
                       <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${rsvpAttending === "no" ? "border-primary bg-primary" : "border-primary-container"}`}>
@@ -121,17 +124,17 @@ export default function Rsvp() {
                         <div className="flex items-center gap-3">
                           <button
                             type="button"
-                            disabled={rsvpGuests <= 1}
-                            onClick={() => setRsvpGuests((g) => Math.max(1, g - 1))}
+                            disabled={rsvpGuests <= 0}
+                            onClick={() => setRsvpGuests((g) => Math.max(0, g - 1))}
                             className="w-10 h-10 rounded-xl bg-primary-container/30 border border-primary-container/40 flex items-center justify-center text-primary disabled:opacity-40 cursor-pointer hover:bg-primary-container/50 transition-colors"
                           >
                             <Minus className="w-4 h-4" />
                           </button>
-                          <span className="text-md font-bold text-primary font-display px-2 w-6 text-center">{rsvpGuests}</span>
+                          <span className="text-md font-bold text-primary font-body-custom px-2 w-6 text-center">1</span>
                           <button
                             type="button"
-                            disabled={rsvpGuests >= 5}
-                            onClick={() => setRsvpGuests((g) => Math.min(5, g + 1))}
+                            disabled={rsvpGuests >= 3}
+                            onClick={() => setRsvpGuests((g) => Math.min(3, g + 1))}
                             className="w-10 h-10 rounded-xl bg-primary-container/30 border border-primary-container/40 flex items-center justify-center text-primary disabled:opacity-40 cursor-pointer hover:bg-primary-container/50 transition-colors"
                           >
                             <Plus className="w-4 h-4" />
@@ -171,7 +174,7 @@ export default function Rsvp() {
                   whileTap={{ scale: 0.98 }}
                   className="w-full bg-primary text-white font-bold font-display text-sm tracking-widest uppercase py-4 rounded-2xl hover:bg-primary-fixed-variant hover:text-white transition-all soft-shadow duration-300 cursor-pointer border-2 border-white/80"
                 >
-                  Confirmar Asistencia
+                  Enviar respuesta
                 </motion.button>
               </form>
             </motion.div>
@@ -181,10 +184,14 @@ export default function Rsvp() {
                 <CheckCircle className="w-12 h-12 stroke-2" />
               </div>
 
-              <h3 className="text-3xl font-display font-bold text-primary mb-3">¡Asistencia Confirmada!</h3>
+              <h3 className="text-3xl font-display font-bold text-primary mb-3">
+                {rsvpAttending === "yes" ? "¡Asistencia Confirmada!" : "¡Mensaje Enviado!"}
+              </h3>
 
               <p className="text-md text-primary-fixed-variant font-medium max-w-sm mx-auto mb-6 font-body-custom">
-                Muchísimas gracias {rsvpName}. Hemos recibido tu confirmación con mucho amor.
+                {rsvpAttending === "yes"
+                  ? `Muchísimas gracias ${rsvpName}. Hemos recibido tu confirmación con mucho amor.`
+                  : `Gracias ${rsvpName}. Tu mensaje ha sido enviado con mucho cariño.`}
               </p>
 
               <div className="bg-white/85 p-6 rounded-2xl border-2 border-primary-container/50 max-w-sm w-full soft-shadow text-left space-y-2 mb-8">
@@ -214,22 +221,7 @@ export default function Rsvp() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 onClick={() => {
-                  const attendingMsg =
-                    rsvpAttending === "yes"
-                      ? `¡Sí, ahí estaré con mucho amor! 💕 (Acompañantes: ${rsvpGuests})`
-                      : "No podré asistir esta vez, pero les envío todo mi amor y bendiciones 🍼✨";
-
-                  let encodedText =
-                    `¡Hola! Confirmo mi asistencia al Baby Shower de Macarena Morales Cárdenas:\n\n` +
-                    `- *Nombre:* ${rsvpName}\n` +
-                    `- *Asistencia:* ${attendingMsg}\n`;
-
-                  if (rsvpAttending === "yes" && rsvpDiet.trim()) {
-                    encodedText += `- *Requisitos dietarios:* ${rsvpDiet}\n`;
-                  }
-                  if (rsvpWishes.trim()) {
-                    encodedText += `- *Mensaje:* "${rsvpWishes}"\n`;
-                  }
+                  const encodedText = buildWhatsAppMessage();
                   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(encodedText)}`, "_blank");
                 }}
                 className="inline-flex items-center gap-2 bg-primary text-white font-bold font-display text-xs tracking-widest uppercase px-6 py-3 rounded-full hover:bg-primary-fixed-variant transition-all duration-300 border-2 border-white shadow shadow-primary-container cursor-pointer"
@@ -244,6 +236,7 @@ export default function Rsvp() {
                   setRsvpName("");
                   setRsvpWishes("");
                   setRsvpDiet("");
+                  setRsvpGuests(0);
                 }}
                 className="text-primary/75 hover:text-primary font-bold text-xs underline mt-6 select-none cursor-pointer"
               >

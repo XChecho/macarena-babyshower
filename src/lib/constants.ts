@@ -23,7 +23,7 @@ export const GALLERY_LIGHTBOX_DESCRIPTIONS = [
 
 export const SMILEBABY_URL = "https://smilebaby.app/56ee1715-aafb-49af-8021-0fba437bbf1d";
 
-export const WHATSAPP_NUMBER = "56912345678";
+export const WHATSAPP_NUMBER = "573106930466";
 
 export const EVENT_DATE = "2026-08-07T15:00:00-05:00";
 
