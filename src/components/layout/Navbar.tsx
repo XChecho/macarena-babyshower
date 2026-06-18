@@ -35,9 +35,8 @@ export default function Navbar({ activeSection, isMuted, onToggleMusic }: Navbar
             <a
               key={sec}
               href={`#${sec}`}
-              className={`font-display text-sm tracking-widest uppercase transition-colors relative py-1 ${
-                activeSection === sec ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary"
-              }`}
+              className={`font-display text-sm tracking-widest uppercase transition-colors relative py-1 ${activeSection === sec ? "text-primary font-bold" : "text-on-surface-variant hover:text-primary"
+                }`}
             >
               {SECTION_LABELS[sec]}
               {activeSection === sec && (
@@ -62,16 +61,15 @@ export default function Navbar({ activeSection, isMuted, onToggleMusic }: Navbar
             <a
               key={item}
               href={`#${item}`}
-              className={`flex flex-col items-center justify-center rounded-2xl px-3 py-1.5 transition-all text-center ${
-                isActive
-                  ? "bg-primary-container text-primary font-bold scale-102 border-b-2 border-primary"
-                  : "text-on-surface-variant"
-              }`}
+              className={`flex flex-col items-center justify-center rounded-2xl px-2 py-1.5 transition-all text-center ${isActive
+                ? "bg-primary-container text-primary font-bold scale-102 border-b-2 border-primary"
+                : "text-on-surface-variant"
+                }`}
             >
               <div className={isActive ? "text-primary" : "text-on-surface-variant/75"}>
                 {SECTION_ICONS[item]}
               </div>
-              <span className="text-[9px] uppercase font-bold tracking-wider mt-0.5">{SECTION_LABELS[item]}</span>
+              <span className="text-[8px] uppercase font-bold tracking-wider mt-0.5">{SECTION_LABELS[item]}</span>
             </a>
           );
         })}

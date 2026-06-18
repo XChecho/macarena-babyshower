@@ -19,7 +19,7 @@ export default function App() {
       <ParticleBackground />
       <Navbar activeSection={activeSection} isMuted={isMuted} onToggleMusic={toggleMute} />
 
-      <main className="w-full flex-grow flex flex-col relative pb-16 md:pb-0">
+      <main className="w-full grow flex flex-col relative pb-16 md:pb-0">
         <Hero />
         <EventDetails />
         <Gallery />

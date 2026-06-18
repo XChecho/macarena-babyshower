@@ -2,7 +2,7 @@ import { Heart } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full px-8 py-10 flex flex-col items-center text-center bg-white border-t-4 border-primary-container relative overflow-hidden">
+    <footer className="w-full px-8 pb-20 pt-10 md:py-10 flex flex-col items-center text-center bg-white border-t-4 border-primary-container relative overflow-hidden">
       <div className="absolute bottom-0 left-0 w-full h-8 bg-repeat-x pointer-events-none opacity-20 scalloped-footer-wave lg:block hidden" />
 
       <div className="text-xl font-bold text-primary mb-2 flex items-center gap-2 tracking-tight">

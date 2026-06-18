@@ -88,7 +88,7 @@ export default function Hero() {
                 ].map((item, idx) => (
                   <div key={idx} className="bg-white/80 p-3 rounded-2xl flex flex-col items-center border border-primary-container/50 soft-shadow">
                     <span className="text-2xl md:text-3xl font-bold font-body-custom text-primary">{item.val.toString().padStart(2, "0")}</span>
-                    <span className="text-[9px] md:text-[10px] tracking-wider text-on-surface-variant/85 font-semibold mt-1">{item.label}</span>
+                    <span className="text-[7px] md:text-[10px] tracking-wider text-on-surface-variant/85 font-semibold mt-1">{item.label}</span>
                   </div>
                 ))}
               </div>

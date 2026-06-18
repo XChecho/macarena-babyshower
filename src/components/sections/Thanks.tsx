@@ -4,7 +4,7 @@ import { HandHeart } from "lucide-react";
 export default function Thanks() {
   return (
     <section
-      className="w-full py-16 px-4 md:px-8 flex flex-col items-center scroll-mt-20 relative z-10 overflow-hidden"
+      className="w-full md:py-16 px-4 md:px-8 flex flex-col items-center scroll-mt-20 relative z-10 overflow-hidden"
       id="thanks"
     >
       <div className="flex flex-col items-center justify-center gap-2 mb-10 text-center">
