@@ -10,7 +10,7 @@
   [![Vite](https://img.shields.io/badge/Vite-6-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
   [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38BDF8?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
   
-  **📅 15 de Octubre de 2026 · 4:00 PM**
+  **📅 7 de Agosto de 2026 · 4:00 PM**
   
   [Ver invitación](https://macarena.xchecho.com) · [Compartir](https://macarena.xchecho.com)
 </div>
@@ -19,13 +19,13 @@
 
 ## 💌 Para mi hija, Macarena
 
-*Antes de que llegaras, ya eras el centro de nuestros sueños.*
+_Antes de que llegaras, ya eras el centro de nuestros sueños._
 
-*Esta página no es solo una invitación. Es un pedacito de mi corazón convertido en código, en colores suaves, en animaciones que danzan esperando tu llegada. Cada línea escrita, cada detalle pensado, cada corazón que late en la pantalla, es un "te amo" que se adelanta al momento de tenerte en mis brazos.*
+_Esta página no es solo una invitación. Es un pedacito de mi corazón convertido en código, en colores suaves, en animaciones que danzan esperando tu llegada. Cada línea escrita, cada detalle pensado, cada corazón que late en la pantalla, es un "te amo" que se adelanta al momento de tenerte en mis brazos._
 
-*Hice esta invitación con mis propias manos, porque quería que lo primero que sintieras al llegar a este mundo fuera esto: que ya eras profundamente amada.*
+_Hice esta invitación con mis propias manos, porque quería que lo primero que sintieras al llegar a este mundo fuera esto: que ya eras profundamente amada._
 
-*Bienvenida, pequeña vaquita. Papá te espera.*
+_Bienvenida, pequeña vaquita. Papá te espera._
 
 <div align="center">
   <em>— Con todo mi amor, papá 💕</em>
@@ -53,15 +53,15 @@ Esta es una **landing page interactiva** diseñada como invitación digital para
 
 ## 🛠️ Stack Tecnológico
 
-| Categoría | Tecnología |
-|-----------|-----------|
-| Framework | React 19 + TypeScript |
-| Build Tool | Vite 6 |
-| Styling | Tailwind CSS v4 (config inline con `@theme`) |
-| Animaciones | Motion (Framer Motion) |
-| Iconos | Lucide React |
-| Audio | HTML5 Audio API |
-| Package Manager | pnpm |
+| Categoría       | Tecnología                                   |
+| --------------- | -------------------------------------------- |
+| Framework       | React 19 + TypeScript                        |
+| Build Tool      | Vite 6                                       |
+| Styling         | Tailwind CSS v4 (config inline con `@theme`) |
+| Animaciones     | Motion (Framer Motion)                       |
+| Iconos          | Lucide React                                 |
+| Audio           | HTML5 Audio API                              |
+| Package Manager | pnpm                                         |
 
 ---
 
@@ -125,13 +125,13 @@ Abre [http://localhost:3000](http://localhost:3000) en tu navegador.
 
 ### Scripts disponibles
 
-| Comando | Descripción |
-|---------|-------------|
-| `pnpm dev` | Inicia servidor de desarrollo (puerto 3000) |
-| `pnpm build` | Construye para producción |
-| `pnpm preview` | Previsualiza el build de producción |
-| `pnpm lint` | Verificación de tipos TypeScript |
-| `pnpm clean` | Elimina `dist` y `server.js` |
+| Comando        | Descripción                                 |
+| -------------- | ------------------------------------------- |
+| `pnpm dev`     | Inicia servidor de desarrollo (puerto 3000) |
+| `pnpm build`   | Construye para producción                   |
+| `pnpm preview` | Previsualiza el build de producción         |
+| `pnpm lint`    | Verificación de tipos TypeScript            |
+| `pnpm clean`   | Elimina `dist` y `server.js`                |
 
 ---
 
@@ -168,10 +168,13 @@ Esto genera la carpeta `dist/` lista para desplegar.
 ## 📝 Notas
 
 ### Música
+
 La canción "Índigo" de Camilo y Evaluna se usa como música de fondo. Para uso público, se requiere la licencia correspondiente.
 
 ### Configuración
+
 Las URLs editables se encuentran en `src/lib/constants.ts`:
+
 - `SMILEBABY_URL` — Link a la lista de regalos
 - `WHATSAPP_NUMBER` — Número de WhatsApp para RSVP
 - `EVENT_DATE` — Fecha del evento (formato ISO)
@@ -182,7 +185,7 @@ Las URLs editables se encuentran en `src/lib/constants.ts`:
 
 **Desarrollado con amor por** Sergio Morales  
 **Para** Macarena Morales Cárdenas  
-**Fecha del evento** 15 de octubre de 2026
+**Fecha del evento** 7 de Agosto de 2026
 
 ---
 

@@ -5,7 +5,7 @@
 **Name:** Macarena Baby Shower  
 **Type:** Landing page para Baby Shower con temática Cow Chibi / Moo Baby Chibi  
 **Purpose:** Invitación digital interactiva para el Baby Shower de Macarena Morales Cárdenas  
-**Event Date:** 15 de octubre de 2026, 4:00 PM  
+**Event Date:** 7 de agosto de 2026, 4:00 PM  
 **Origin:** Exportado de Google AI Studio
 
 ## Tech Stack

@@ -25,7 +25,7 @@ export const SMILEBABY_URL = "https://smilebaby.app/56ee1715-aafb-49af-8021-0fba
 
 export const WHATSAPP_NUMBER = "573106930466";
 
-export const EVENT_DATE = "2026-08-07T15:00:00-05:00";
+export const EVENT_DATE = "2026-08-07T16:00:00-05:00";
 
 export const BACKGROUND_MUSIC_SRC = "/assets/sounds/indigo.mp3";
 

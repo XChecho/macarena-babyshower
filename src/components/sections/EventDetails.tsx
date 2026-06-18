@@ -40,7 +40,7 @@ export default function EventDetails() {
           </div>
           <div className="flex flex-col justify-center mt-2 items-center">
             <span className="text-[11px] font-bold tracking-widest text-secondary font-display uppercase">HORA</span>
-            <span className="text-lg md:text-xl font-bold text-on-surface mt-1 leading-snug">3:00 PM</span>
+            <span className="text-lg md:text-xl font-bold text-on-surface mt-1 leading-snug">4:00 PM</span>
             <span className="text-xs text-on-surface-variant font-medium mt-1">Te esperamos puntualmente</span>
           </div>
           <div className="absolute right-4 bottom-4 text-3xl opacity-15 select-none font-display">🌞</div>
