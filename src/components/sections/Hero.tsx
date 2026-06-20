@@ -14,10 +14,10 @@ export default function Hero() {
       <div className="absolute top-0 left-0 w-48 h-48 bg-primary-container/20 rounded-br-full pointer-events-none z-0" />
       <div className="absolute bottom-0 right-0 w-56 h-56 bg-secondary-fixed/20 rounded-tl-full pointer-events-none z-0" />
 
-      <div className="absolute top-1/4 left-10 md:left-24 text-4xl animate-bounce pointer-events-none opacity-40 select-none">🌸</div>
-      <div className="absolute top-1/3 right-10 md:right-32 text-4xl animate-bounce pointer-events-none opacity-40 select-none" style={{ animationDelay: "0.4s" }}>🍼</div>
-      <div className="absolute bottom-1/4 left-12 md:left-28 text-4xl animate-float pointer-events-none opacity-40 select-none">🧸</div>
-      <div className="absolute bottom-1/3 right-12 md:right-28 text-4xl animate-float pointer-events-none opacity-40 select-none">🍼</div>
+      <span aria-hidden="true" className="absolute top-1/4 left-10 md:left-24 text-4xl animate-bounce pointer-events-none opacity-40 select-none">🌸</span>
+      <span aria-hidden="true" className="absolute top-1/3 right-10 md:right-32 text-4xl animate-bounce pointer-events-none opacity-40 select-none" style={{ animationDelay: "0.4s" }}>🍼</span>
+      <span aria-hidden="true" className="absolute bottom-1/4 left-12 md:left-28 text-4xl animate-float pointer-events-none opacity-40 select-none">🧸</span>
+      <span aria-hidden="true" className="absolute bottom-1/3 right-12 md:right-28 text-4xl animate-float pointer-events-none opacity-40 select-none">🍼</span>
 
       <div className="relative z-10 px-4 md:px-8 py-10 w-full max-w-4xl flex flex-col items-center">
         <motion.div
@@ -28,15 +28,13 @@ export default function Hero() {
         >
           <img
             src="/assets/images/decoracion2.png"
-            alt="Decoración esquina superior izquierda"
-            className="absolute -top-8 -left-8 md:-top-12 md:-left-16  w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20"
-            style={{ transform: "rotate(-12deg)" }}
+            alt=""
+            className="absolute -top-8 -left-8 md:-top-12 md:-left-16  w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20 -rotate-12"
           />
           <img
             src="/assets/images/decoracion1.png"
-            alt="Decoración esquina inferior derecha"
-            className="absolute -bottom-8 -right-8 md:-bottom-16 md:-right-20 w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20"
-            style={{ transform: "rotate(12deg)" }}
+            alt=""
+            className="absolute -bottom-8 -right-8 md:-bottom-16 md:-right-20 w-32 h-32 md:w-72 md:h-72 pointer-events-none select-none z-20 rotate-12"
           />
 
           <div className="relative w-40 h-40 md:w-52 md:h-52 mx-auto mb-6">
@@ -55,7 +53,7 @@ export default function Hero() {
           <h1 className="text-5xl md:text-8xl font-bold font-baby-name text-primary mb-1 drop-shadow-sm leading-none">
             Macarena
           </h1>
-          <h2 className="text-xl md:text-3xl font-regular font-display text-primary mb-4 drop-shadow-sm leading-none opacity-75">
+          <h2 className="text-xl md:text-3xl font-normal font-display text-primary mb-4 drop-shadow-sm leading-none opacity-75">
             Morales Cárdenas
           </h2>
 
@@ -76,7 +74,7 @@ export default function Hero() {
 
             {timeLeft.isOver ? (
               <div className="bg-white/80 border-2 border-primary-container shadow-sm px-6 py-3 rounded-2xl">
-                <span className="text-md font-bold text-primary">🎉 ¡Llegó el gran día! Macarena con nosotros 💕</span>
+                <span className="text-base font-bold text-primary">🎉 ¡Llegó el gran día! Macarena con nosotros 💕</span>
               </div>
             ) : (
               <div className="grid grid-cols-4 gap-4 w-full justify-center">

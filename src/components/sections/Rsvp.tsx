@@ -1,16 +1,23 @@
-import React, { useState } from "react";
+import { useState, useCallback, useId } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Mail, CheckCircle, MessageCircle, Plus, Minus } from "lucide-react";
 import { WHATSAPP_NUMBER } from "../../lib/constants";
 
 export default function Rsvp() {
   const [rsvpName, setRsvpName] = useState("");
-  const [rsvpAttending, setRsvpAttending] = useState("yes");
+  const [rsvpAttending, setRsvpAttending] = useState<"yes" | "no">("yes");
   const [rsvpGuests, setRsvpGuests] = useState(0);
   const [rsvpDiet, setRsvpDiet] = useState("");
   const [rsvpWishes, setRsvpWishes] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const buildWhatsAppMessage = () => {
+
+  const formId = useId();
+  const nameId = `${formId}-name`;
+  const dietId = `${formId}-diet`;
+  const wishesId = `${formId}-wishes`;
+  const guestsId = `${formId}-guests`;
+
+  const buildWhatsAppMessage = useCallback(() => {
     const isAttending = rsvpAttending === "yes";
 
     let message = isAttending
@@ -30,20 +37,20 @@ export default function Rsvp() {
     }
 
     return message;
-  };
+  }, [rsvpName, rsvpAttending, rsvpGuests, rsvpDiet, rsvpWishes]);
+
+  const openWhatsApp = useCallback(() => {
+    const encodedText = buildWhatsAppMessage();
+    const whatsAppLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(encodedText)}`;
+    window.open(whatsAppLink, "_blank", "noopener,noreferrer");
+  }, [buildWhatsAppMessage]);
 
   const handleRsvpSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!rsvpName.trim()) return;
 
     setIsSubmitted(true);
-
-    const encodedText = buildWhatsAppMessage();
-    const whatsAppLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(encodedText)}`;
-
-    setTimeout(() => {
-      window.open(whatsAppLink, "_blank");
-    }, 1800);
+    setTimeout(openWhatsApp, 400);
   };
 
   return (
@@ -69,9 +76,12 @@ export default function Rsvp() {
 
               <form onSubmit={handleRsvpSubmit} className="text-left space-y-5 bg-white/75 p-6 md:p-8 rounded-3xl soft-shadow border border-white/80">
                 <div>
-                  <label className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">Tu Nombre Completo *</label>
+                  <label htmlFor={nameId} className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">
+                    Tu Nombre Completo *
+                  </label>
                   <div className="relative">
                     <input
+                      id={nameId}
                       type="text"
                       required
                       value={rsvpName}
@@ -79,15 +89,19 @@ export default function Rsvp() {
                       placeholder="Ingresa tu nombre y apellido"
                       className="w-full rounded-2xl border-2 border-primary-container/50 bg-white/90 px-4 py-3.5 text-sm text-on-background placeholder:text-on-surface-variant/40 focus:border-primary focus:outline-none transition-all font-body-custom font-semibold focus:ring-1 focus:ring-primary"
                     />
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-primary-container text-xs">🐮</div>
+                    <span aria-hidden="true" className="absolute right-4 top-1/2 -translate-y-1/2 text-primary-container text-xs">🐮</span>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">¿Asistirás? *</label>
+                <div role="radiogroup" aria-labelledby={`${formId}-attending-label`} className="space-y-2">
+                  <span id={`${formId}-attending-label`} className="block text-xs font-bold tracking-wider text-primary font-display uppercase">
+                    ¿Asistirás? *
+                  </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <button
                       type="button"
+                      role="radio"
+                      aria-checked={rsvpAttending === "yes"}
                       onClick={() => setRsvpAttending("yes")}
                       className={`flex items-center justify-between p-3.5 rounded-2xl border-2 transition-all font-semibold font-body-custom text-sm cursor-pointer ${rsvpAttending === "yes"
                         ? "border-primary bg-primary-container/20 text-primary shadow-sm"
@@ -95,13 +109,15 @@ export default function Rsvp() {
                         }`}
                     >
                       <span>Sí, ahí estaré con amor 💕</span>
-                      <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${rsvpAttending === "yes" ? "border-primary bg-primary" : "border-primary-container"}`}>
-                        {rsvpAttending === "yes" && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      <span aria-hidden="true" className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${rsvpAttending === "yes" ? "border-primary bg-primary" : "border-primary-container"}`}>
+                        {rsvpAttending === "yes" && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                       </span>
                     </button>
 
                     <button
                       type="button"
+                      role="radio"
+                      aria-checked={rsvpAttending === "no"}
                       onClick={() => setRsvpAttending("no")}
                       className={`flex items-center justify-between p-3.5 rounded-2xl border-2 transition-all font-semibold font-body-custom text-sm cursor-pointer ${rsvpAttending === "no"
                         ? "border-primary bg-primary-container/20 text-primary shadow-sm"
@@ -109,8 +125,8 @@ export default function Rsvp() {
                         }`}
                     >
                       <span>No podré asistir 🌟</span>
-                      <span className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${rsvpAttending === "no" ? "border-primary bg-primary" : "border-primary-container"}`}>
-                        {rsvpAttending === "no" && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      <span aria-hidden="true" className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${rsvpAttending === "no" ? "border-primary bg-primary" : "border-primary-container"}`}>
+                        {rsvpAttending === "no" && <span className="w-1.5 h-1.5 rounded-full bg-white" />}
                       </span>
                     </button>
                   </div>
@@ -120,19 +136,25 @@ export default function Rsvp() {
                   {rsvpAttending === "yes" && (
                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="space-y-4 overflow-hidden">
                       <div>
-                        <label className="block text-xs font-bold tracking-wider text-primary font-display mb-1.5 uppercase">Número de Acompañantes</label>
-                        <div className="flex items-center gap-3">
+                        <label id={guestsId} className="block text-xs font-bold tracking-wider text-primary font-display mb-1.5 uppercase">
+                          Número de Acompañantes
+                        </label>
+                        <div className="flex items-center gap-3" role="group" aria-labelledby={guestsId}>
                           <button
                             type="button"
+                            aria-label="Disminuir acompañantes"
                             disabled={rsvpGuests <= 0}
                             onClick={() => setRsvpGuests((g) => Math.max(0, g - 1))}
                             className="w-10 h-10 rounded-xl bg-primary-container/30 border border-primary-container/40 flex items-center justify-center text-primary disabled:opacity-40 cursor-pointer hover:bg-primary-container/50 transition-colors"
                           >
                             <Minus className="w-4 h-4" />
                           </button>
-                          <span className="text-md font-bold text-primary font-body-custom px-2 w-6 text-center">1</span>
+                          <span aria-live="polite" aria-atomic="true" className="text-base font-bold text-primary font-body-custom px-2 w-6 text-center">
+                            {rsvpGuests}
+                          </span>
                           <button
                             type="button"
+                            aria-label="Aumentar acompañantes"
                             disabled={rsvpGuests >= 3}
                             onClick={() => setRsvpGuests((g) => Math.min(3, g + 1))}
                             className="w-10 h-10 rounded-xl bg-primary-container/30 border border-primary-container/40 flex items-center justify-center text-primary disabled:opacity-40 cursor-pointer hover:bg-primary-container/50 transition-colors"
@@ -144,8 +166,11 @@ export default function Rsvp() {
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">¿Alguna Alergia o Restricción Alimentaria?</label>
+                        <label htmlFor={dietId} className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">
+                          ¿Alguna Alergia o Restricción Alimentaria?
+                        </label>
                         <input
+                          id={dietId}
                           type="text"
                           value={rsvpDiet}
                           onChange={(e) => setRsvpDiet(e.target.value)}
@@ -158,8 +183,11 @@ export default function Rsvp() {
                 </AnimatePresence>
 
                 <div>
-                  <label className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">Dedica unas palabras tiernas (Opcional)</label>
+                  <label htmlFor={wishesId} className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">
+                    Dedica unas palabras tiernas (Opcional)
+                  </label>
                   <textarea
+                    id={wishesId}
                     value={rsvpWishes}
                     onChange={(e) => setRsvpWishes(e.target.value)}
                     placeholder="Escribe un mensajito o buenos deseos para Macarena y sus papás..."
@@ -188,7 +216,7 @@ export default function Rsvp() {
                 {rsvpAttending === "yes" ? "¡Asistencia Confirmada!" : "¡Mensaje Enviado!"}
               </h3>
 
-              <p className="text-md text-primary-fixed-variant font-medium max-w-sm mx-auto mb-6 font-body-custom">
+              <p className="text-base text-primary-fixed-variant font-medium max-w-sm mx-auto mb-6 font-body-custom">
                 {rsvpAttending === "yes"
                   ? `Muchísimas gracias ${rsvpName}. Hemos recibido tu confirmación con mucho amor.`
                   : `Gracias ${rsvpName}. Tu mensaje ha sido enviado con mucho cariño.`}
@@ -214,16 +242,14 @@ export default function Rsvp() {
                 )}
               </div>
 
-              <p className="text-xs text-on-primary-fixed-variant/85 italic mb-4">
+              <p className="text-xs text-on-primary-fixed-variant/85 italic mb-4" aria-live="polite">
                 Abriendo chat de WhatsApp para enviar el mensaje...
               </p>
 
               <motion.button
+                type="button"
                 whileHover={{ scale: 1.05 }}
-                onClick={() => {
-                  const encodedText = buildWhatsAppMessage();
-                  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(encodedText)}`, "_blank");
-                }}
+                onClick={openWhatsApp}
                 className="inline-flex items-center gap-2 bg-primary text-white font-bold font-display text-xs tracking-widest uppercase px-6 py-3 rounded-full hover:bg-primary-fixed-variant transition-all duration-300 border-2 border-white shadow shadow-primary-container cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 fill-white stroke-none" />
@@ -231,6 +257,7 @@ export default function Rsvp() {
               </motion.button>
 
               <button
+                type="button"
                 onClick={() => {
                   setIsSubmitted(false);
                   setRsvpName("");

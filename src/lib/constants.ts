@@ -1,27 +1,14 @@
 export const LOGO_MACARENA = "/assets/images/logoMacarena.png";
 
 export const GALLERY_PHOTOS = [
-  "/assets/images/gallery-1.jpg",
-  "/assets/images/gallery-2.jpg",
-  "/assets/images/gallery-3.jpg",
-  "/assets/images/gallery-4.jpg",
-];
-
-export const GALLERY_CAPTIONS = [
-  "Mamá y Papá esperando 💕",
-  "Zapatitos Chibi 👶",
-  "Primera ecografía ✨",
-  "Decoración dulce 🧁",
-];
-
-export const GALLERY_LIGHTBOX_DESCRIPTIONS = [
-  "¡Papá y mamá muy ilusionados esperando la llegada de Macarena!",
-  "Detalles hechos a mano con mucho cariño para el clóset de la bebé",
-  "Con mucha emoción, observamos y amamos la ecografía de nuestra vaquita",
-  "Un banquete de ternura con bocados dulces y arreglos especiales",
+  "/assets/images/Gallery1.jpg",
+  "/assets/images/Gallery2.jpg",
+  "/assets/images/GalleryCambio.jpg",
 ];
 
 export const SMILEBABY_URL = "https://smilebaby.app/56ee1715-aafb-49af-8021-0fba437bbf1d";
+
+export const MAPS_URL = "https://maps.app.goo.gl/huaijgDmj6MZcmWZ9";
 
 export const WHATSAPP_NUMBER = "573106930466";
 
@@ -38,6 +25,6 @@ export const SECTION_LABELS: Record<SectionId, string> = {
   event: "Evento",
   gallery: "Galería",
   gifts: "Regalos",
-  rsvp: "RSVP",
+  rsvp: "Asistencia",
   thanks: "Gracias",
 };

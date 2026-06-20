@@ -5,22 +5,30 @@ export function useScrollSpy() {
   const [activeSection, setActiveSection] = useState<SectionId>("hero");
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+    let ticking = false;
 
-      for (const section of SECTIONS) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.clientHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const scrollPosition = window.scrollY + 200;
+
+        for (const section of SECTIONS) {
+          const el = document.getElementById(section);
+          if (el) {
+            const top = el.offsetTop;
+            const height = el.clientHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+              setActiveSection(section);
+            }
           }
         }
-      }
+        ticking = false;
+      });
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 

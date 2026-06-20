@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Calendar, Clock, MapPin, Map } from "lucide-react";
+import { MAPS_URL } from "../../lib/constants";
 
 export default function EventDetails() {
   return (
@@ -8,11 +9,11 @@ export default function EventDetails() {
       id="event"
     >
       <div className="flex items-center justify-center gap-3.5 mb-10 text-center">
-        <span className="text-3xl text-primary p-1 animate-pulse">🌸</span>
+        <span aria-hidden="true" className="text-3xl text-primary p-1 animate-pulse">🌸</span>
         <h2 className="text-3xl md:text-4xl font-bold font-display text-primary tracking-tight">
           Detalles del Evento
         </h2>
-        <span className="text-3xl text-primary p-1 animate-pulse" style={{ animationDelay: "0.5s" }}>🌸</span>
+        <span aria-hidden="true" className="text-3xl text-primary p-1 animate-pulse" style={{ animationDelay: "0.5s" }}>🌸</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl justify-center items-stretch">
@@ -28,7 +29,7 @@ export default function EventDetails() {
             <span className="text-lg md:text-xl font-bold text-on-surface mt-1 leading-snug">7 de Agosto, 2026</span>
             <span className="text-xs text-on-surface-variant font-medium mt-1">¡Reserva el día en tu agenda!</span>
           </div>
-          <div className="absolute right-4 bottom-4 text-3xl opacity-15 select-none font-display">🐮</div>
+          <div aria-hidden="true" className="absolute right-4 bottom-4 text-3xl opacity-15 select-none font-display">🐮</div>
         </motion.div>
 
         <motion.div
@@ -43,7 +44,7 @@ export default function EventDetails() {
             <span className="text-lg md:text-xl font-bold text-on-surface mt-1 leading-snug">4:00 PM</span>
             <span className="text-xs text-on-surface-variant font-medium mt-1">Te esperamos puntualmente</span>
           </div>
-          <div className="absolute right-4 bottom-4 text-3xl opacity-15 select-none font-display">🌞</div>
+          <div aria-hidden="true" className="absolute right-4 bottom-4 text-3xl opacity-15 select-none font-display">🌞</div>
         </motion.div>
 
         <motion.div
@@ -63,7 +64,7 @@ export default function EventDetails() {
 
           <motion.a
             whileTap={{ scale: 0.98 }}
-            href="https://maps.app.goo.gl/huaijgDmj6MZcmWZ9"
+            href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-primary text-white rounded-full font-bold text-xs tracking-widest uppercase hover:bg-primary-container hover:text-primary transition-all duration-300 soft-shadow w-full mt-auto"
@@ -71,7 +72,7 @@ export default function EventDetails() {
             <Map className="w-4 h-4" />
             Ver en el mapa
           </motion.a>
-          <div className="absolute right-4 bottom-16 text-3xl opacity-15 select-none font-display">🌾</div>
+          <div aria-hidden="true" className="absolute right-4 bottom-16 text-3xl opacity-15 select-none font-display">🌾</div>
         </motion.div>
       </div>
     </section>

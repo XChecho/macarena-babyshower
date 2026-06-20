@@ -41,9 +41,9 @@ export default function ParticleBackground() {
           }}
         >
           {p.isHeart ? (
-            <span className="text-primary-container filter drop-shadow-sm select-none">🌸</span>
+            <span aria-hidden="true" className="text-primary-container filter drop-shadow-sm select-none">🌸</span>
           ) : (
-            <span className="text-secondary-fixed filter drop-shadow-sm select-none opacity-80">💛</span>
+            <span aria-hidden="true" className="text-secondary-fixed filter drop-shadow-sm select-none opacity-80">💛</span>
           )}
         </div>
       ))}

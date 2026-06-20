@@ -25,6 +25,30 @@
 }
 
 @font-face {
+  font-family: 'Merienda';
+  src: url('/assets/fonts/Merienda-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merienda';
+  src: url('/assets/fonts/Merienda-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Merienda';
+  src: url('/assets/fonts/Merienda-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Garet';
   src: url('/assets/fonts/Garet-Book.ttf') format('truetype');
   font-weight: 400;
@@ -52,7 +76,7 @@
   --color-surface-custom: #ffffff;
   
   --font-display: "Bubbleboddy Neue", "Fredoka", sans-serif;
-  --font-body-custom: "Garet", sans-serif;
+  --font-body-custom: "Merienda", "Garet", sans-serif;
   --font-baby-name: "Bacalisties", cursive;
 }
 
@@ -141,4 +165,16 @@
 /* Scalloped footer wave */
 .scalloped-footer-wave {
   background-image: url('data:image/svg+xml;utf8,<svg width="20" height="8" viewBox="0 0 20 8" xmlns="http://www.w3.org/2000/svg"><path d="M0,8 Q5,0 10,8 T20,8 Z" fill="%23825059"/></svg>');
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -5,15 +5,23 @@ export function useBackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const audio = new Audio(BACKGROUND_MUSIC_SRC);
     audio.loop = true;
     audio.preload = "auto";
     audio.volume = 0.25;
+
+    const handleError = () => {
+      setHasError(true);
+      console.warn("Background music failed to load.");
+    };
+    audio.addEventListener("error", handleError);
     audioRef.current = audio;
 
     return () => {
+      audio.removeEventListener("error", handleError);
       audio.pause();
       audio.src = "";
       audioRef.current = null;
@@ -39,7 +47,7 @@ export function useBackgroundMusic() {
   }, [hasInteracted]);
 
   useEffect(() => {
-    if (!audioRef.current) return;
+    if (!audioRef.current || hasError) return;
 
     if (hasInteracted && !isMuted) {
       audioRef.current.play().catch((err) => {
@@ -48,11 +56,11 @@ export function useBackgroundMusic() {
     } else {
       audioRef.current.pause();
     }
-  }, [hasInteracted, isMuted]);
+  }, [hasInteracted, isMuted, hasError]);
 
   const toggleMute = useCallback(() => {
     setIsMuted((prev) => !prev);
   }, []);
 
-  return { isMuted, hasInteracted, toggleMute };
+  return { isMuted, hasInteracted, hasError, toggleMute };
 }

@@ -54,7 +54,7 @@ export default function Navbar({ activeSection, isMuted, onToggleMusic }: Navbar
         </div>
       </header>
 
-      <nav className="md:hidden fixed bottom-0 left-0 w-full z-40 flex justify-around items-center px-4 py-3 pb-safe bg-white/95 backdrop-blur-md rounded-t-[1.8rem] border-t-2 border-primary-container/50 soft-shadow">
+      <nav className="md:hidden fixed bottom-0 left-0 w-full z-40 flex justify-around items-center px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] bg-white/95 backdrop-blur-md rounded-t-[1.8rem] border-t-2 border-primary-container/50 soft-shadow">
         {SECTIONS.map((item) => {
           const isActive = activeSection === item;
           return (
@@ -62,7 +62,7 @@ export default function Navbar({ activeSection, isMuted, onToggleMusic }: Navbar
               key={item}
               href={`#${item}`}
               className={`flex flex-col items-center justify-center rounded-2xl px-2 py-1.5 transition-all text-center ${isActive
-                ? "bg-primary-container text-primary font-bold scale-102 border-b-2 border-primary"
+                ? "bg-primary-container text-primary font-bold scale-[1.02] border-b-2 border-primary"
                 : "text-on-surface-variant"
                 }`}
             >
@@ -74,6 +74,10 @@ export default function Navbar({ activeSection, isMuted, onToggleMusic }: Navbar
           );
         })}
       </nav>
+
+      <div className="md:hidden fixed bottom-24 right-5 z-50">
+        <MusicToggle isMuted={isMuted} onToggle={onToggleMusic} />
+      </div>
     </>
   );
 }

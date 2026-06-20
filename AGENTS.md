@@ -46,15 +46,13 @@ macarena-baby-shower/
 │   │   │   └── Thanks.tsx    # Agradecimientos
 │   │   └── ui/
 │   │       ├── ParticleBackground.tsx
-│   │       ├── Lightbox.tsx
 │   │       └── MusicToggle.tsx
 │   ├── hooks/
 │   │   ├── useCountdown.ts
 │   │   ├── useScrollSpy.ts
 │   │   └── useBackgroundMusic.ts
 │   └── lib/
-│       ├── constants.ts      # URLs, config, datos estáticos
-│       └── utils.ts
+│       └── constants.ts      # URLs, config, datos estáticos
 ├── index.html
 ├── package.json
 ├── tsconfig.json

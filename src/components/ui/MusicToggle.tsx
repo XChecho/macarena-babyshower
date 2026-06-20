@@ -9,6 +9,7 @@ interface MusicToggleProps {
 export default function MusicToggle({ isMuted, onToggle }: MusicToggleProps) {
   return (
     <motion.button
+      type="button"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
       onClick={onToggle}

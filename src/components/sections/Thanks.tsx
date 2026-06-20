@@ -23,10 +23,10 @@ export default function Thanks() {
         transition={{ duration: 0.8 }}
         className="bg-white rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-14 soft-shadow border-4 border-primary-container/30 max-w-2xl w-full text-center relative overflow-hidden"
       >
-        <div className="absolute top-4 left-4 text-3xl opacity-20 select-none animate-float">🌸</div>
-        <div className="absolute top-8 right-8 text-2xl opacity-20 select-none animate-float" style={{ animationDelay: "1s" }}>💛</div>
-        <div className="absolute bottom-6 left-8 text-2xl opacity-20 select-none animate-float" style={{ animationDelay: "2s" }}>🌸</div>
-        <div className="absolute bottom-4 right-4 text-3xl opacity-20 select-none animate-float" style={{ animationDelay: "0.5s" }}>💛</div>
+        <div aria-hidden="true" className="absolute top-4 left-4 text-3xl opacity-20 select-none animate-float">🌸</div>
+        <div aria-hidden="true" className="absolute top-8 right-8 text-2xl opacity-20 select-none animate-float" style={{ animationDelay: "1s" }}>💛</div>
+        <div aria-hidden="true" className="absolute bottom-6 left-8 text-2xl opacity-20 select-none animate-float" style={{ animationDelay: "2s" }}>🌸</div>
+        <div aria-hidden="true" className="absolute bottom-4 right-4 text-3xl opacity-20 select-none animate-float" style={{ animationDelay: "0.5s" }}>💛</div>
 
         <motion.div
           initial={{ scale: 0 }}
@@ -73,6 +73,7 @@ export default function Thanks() {
         {["🌸", "💛", "🌸", "💛", "🌸"].map((emoji, i) => (
           <motion.span
             key={i}
+            aria-hidden="true"
             animate={{ y: [0, -8, 0] }}
             transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
             className="text-2xl opacity-60"
