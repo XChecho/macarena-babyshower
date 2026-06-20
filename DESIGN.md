@@ -66,17 +66,17 @@ typography:
     fontWeight: '600'
     lineHeight: 36px
   subhead-decorative:
-    fontFamily: merienda
+    fontFamily: garet
     fontSize: 20px
     fontWeight: '700'
     lineHeight: 28px
   body-md:
-    fontFamily: merienda
+    fontFamily: garet
     fontSize: 16px
     fontWeight: '400'
     lineHeight: 24px
   label-caps:
-    fontFamily: merienda
+    fontFamily: garet
     fontSize: 12px
     fontWeight: '700'
     lineHeight: 16px
@@ -112,7 +112,7 @@ The palette is dominated by soft, airy tones contrasted with rich, grounding "co
 ## Typography
 The typography uses a mix of rounded sans-serifs and hand-drawn serifs to balance playfulness with information. 
 - **Headers:** Utilize a bold, rounded font (mapped to *Bubbleboddy Neue* for its friendly, approachable curves) to mimic the "Bubbleboddy" aesthetic.
-- **Body & Accents:** Utilize a warm, readable serif (mapped to *Merienda*) to provide the "bookish" and personal feel of an invitation. 
+- **Body & Accents:** Utilize a warm, readable sans-serif (mapped to *Garet*) to provide the "bookish" and personal feel of an invitation. 
 - **Display Style:** Large "Display Chibi" should be used for names, often rendered in the primary pink with a slight text shadow for depth.
 
 ## Layout & Spacing

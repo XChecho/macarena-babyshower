@@ -25,30 +25,6 @@
 }
 
 @font-face {
-  font-family: 'Merienda';
-  src: url('/assets/fonts/Merienda-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Merienda';
-  src: url('/assets/fonts/Merienda-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Merienda';
-  src: url('/assets/fonts/Merienda-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'Garet';
   src: url('/assets/fonts/Garet-Book.ttf') format('truetype');
   font-weight: 400;
@@ -76,7 +52,7 @@
   --color-surface-custom: #ffffff;
   
   --font-display: "Bubbleboddy Neue", "Fredoka", sans-serif;
-  --font-body-custom: "Merienda", "Garet", sans-serif;
+  --font-body-custom: "Garet", sans-serif;
   --font-baby-name: "Bacalisties", cursive;
 }
 

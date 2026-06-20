@@ -10,14 +10,12 @@ Fuente principal para títulos y headers.
 
 **Uso:** Títulos, nombres, headers principales
 
-## Merienda
+## Garet
 
 Fuente para cuerpo de texto y acentos.
 
 **Archivos incluidos:**
-- `Merienda-Regular.ttf` - Peso regular (400)
-- `Merienda-Medium.ttf` - Peso medium (500)
-- `Merienda-Bold.ttf` - Peso bold (700)
+- `Garet-Book.ttf` - Peso book (400)
 
 **Uso:** Cuerpo de texto, acentos, etiquetas, labels
 

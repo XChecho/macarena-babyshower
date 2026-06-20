@@ -23,7 +23,7 @@
 ```
 macarena-baby-shower/
 ├── assets/
-│   ├── fonts/                # Fuentes locales (Bubbleboddy Neue, Merienda)
+│   ├── fonts/                # Fuentes locales (Bubbleboddy Neue, Garet)
 │   └── .aistudio/            # Configuración de AI Studio
 ├── public/
 │   └── assets/
@@ -79,10 +79,10 @@ macarena-baby-shower/
 - Fuente: [Bubbleboddy Neue](https://www.dafont.com/es/bubbleboddy-neue.font)
 - Estado: ✅ Configurada en `assets/fonts/`
 
-**Body Font:** Merienda  
+**Body Font:** Garet  
 - Uso: Cuerpo de texto, acentos, etiquetas
-- Características: Serif cálida, legible, estilo "bookish"
-- Fuente: [Merienda](https://fonts.google.com/specimen/Merienda)
+- Características: Sans-serif geométrica, legible, estilo "bookish"
+- Fuente: [Garet](https://connary.com/typefaces/garet.html)
 - Estado: ✅ Configurada en `assets/fonts/`
 
 ### Color Palette
@@ -227,9 +227,7 @@ Las imágenes se almacenan en `public/assets/images/`:
 
 - `assets/fonts/BubbleboddyNeue-Regular.ttf`
 - `assets/fonts/BubbleboddyNeue-Bold.ttf`
-- `assets/fonts/Merienda-Regular.ttf`
-- `assets/fonts/Merienda-Medium.ttf`
-- `assets/fonts/Merienda-Bold.ttf`
+- `assets/fonts/Garet-Book.ttf`
 
 ## Deployment
 

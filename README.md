@@ -70,7 +70,7 @@ Esta es una **landing page interactiva** diseñada como invitación digital para
 ```
 macarena-baby-shower/
 ├── assets/
-│   └── fonts/                    # Bubbleboddy Neue, Merienda
+│   └── fonts/                    # Bubbleboddy Neue, Garet
 ├── public/
 │   └── assets/
 │       ├── images/               # Avatar, galería, logo
