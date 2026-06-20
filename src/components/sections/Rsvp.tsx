@@ -7,13 +7,11 @@ export default function Rsvp() {
   const [rsvpName, setRsvpName] = useState("");
   const [rsvpAttending, setRsvpAttending] = useState<"yes" | "no">("yes");
   const [rsvpGuests, setRsvpGuests] = useState(0);
-  const [rsvpDiet, setRsvpDiet] = useState("");
   const [rsvpWishes, setRsvpWishes] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const formId = useId();
   const nameId = `${formId}-name`;
-  const dietId = `${formId}-diet`;
   const wishesId = `${formId}-wishes`;
   const guestsId = `${formId}-guests`;
 
@@ -25,11 +23,7 @@ export default function Rsvp() {
       : `Hola, gracias por la invitación al Baby Shower de Macarena. Quiero confirmarte que yo, ${rsvpName}, no podré asistir.`;
 
     if (isAttending && rsvpGuests > 0) {
-      message += `\nAdemás, voy con ${rsvpGuests} de acompañantes.`;
-    }
-
-    if (isAttending && rsvpDiet.trim()) {
-      message += `\nTambién me gustaría informar que ${rsvpDiet}.`;
+      message += `\nAdemás, voy con ${rsvpGuests} acompañantes.`;
     }
 
     if (rsvpWishes.trim()) {
@@ -37,7 +31,7 @@ export default function Rsvp() {
     }
 
     return message;
-  }, [rsvpName, rsvpAttending, rsvpGuests, rsvpDiet, rsvpWishes]);
+  }, [rsvpName, rsvpAttending, rsvpGuests, rsvpWishes]);
 
   const openWhatsApp = useCallback(() => {
     const encodedText = buildWhatsAppMessage();
@@ -164,20 +158,6 @@ export default function Rsvp() {
                           <span className="text-xs text-on-surface-variant/75 ml-1 select-none">persona(s)</span>
                         </div>
                       </div>
-
-                      <div>
-                        <label htmlFor={dietId} className="block text-xs font-bold tracking-wider text-primary font-display mb-2 uppercase">
-                          ¿Alguna Alergia o Restricción Alimentaria?
-                        </label>
-                        <input
-                          id={dietId}
-                          type="text"
-                          value={rsvpDiet}
-                          onChange={(e) => setRsvpDiet(e.target.value)}
-                          placeholder="Ej: Vegetariano, vegano, celíaco (opcional)"
-                          className="w-full rounded-2xl border-2 border-primary-container/50 bg-white/90 px-4 py-3 text-sm text-on-background placeholder:text-on-surface-variant/35 focus:border-primary focus:outline-none transition-all font-body-custom"
-                        />
-                      </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
@@ -262,7 +242,6 @@ export default function Rsvp() {
                   setIsSubmitted(false);
                   setRsvpName("");
                   setRsvpWishes("");
-                  setRsvpDiet("");
                   setRsvpGuests(0);
                 }}
                 className="text-primary/75 hover:text-primary font-bold text-xs underline mt-6 select-none cursor-pointer"

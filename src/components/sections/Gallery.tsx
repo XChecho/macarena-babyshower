@@ -29,7 +29,7 @@ export default function Gallery() {
             key={index}
             className={`bg-white p-3 pb-8 rounded-2xl soft-shadow border border-primary-container/30 transform transition-all duration-500 hover:scale-[1.04] ${rotations[index % rotations.length]} relative group`}
           >
-            <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-primary-container/10 relative">
+            <div className="w-full aspect-4/5 rounded-xl overflow-hidden bg-primary-container/10 relative">
               <img
                 src={photo}
                 alt={`Momento dulce ${index + 1}`}
